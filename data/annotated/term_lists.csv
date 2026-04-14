@@ -1,0 +1,570 @@
+entity_type,term
+CLIMATE_DRIVER,carbon dioxide
+CLIMATE_DRIVER,CO2
+CLIMATE_DRIVER,CO₂
+CLIMATE_DRIVER,methane
+CLIMATE_DRIVER,CH4
+CLIMATE_DRIVER,CH₄
+CLIMATE_DRIVER,nitrous oxide
+CLIMATE_DRIVER,N2O
+CLIMATE_DRIVER,N₂O
+CLIMATE_DRIVER,ozone
+CLIMATE_DRIVER,O3
+CLIMATE_DRIVER,O₃
+CLIMATE_DRIVER,water vapour
+CLIMATE_DRIVER,water vapor
+CLIMATE_DRIVER,sulfur dioxide
+CLIMATE_DRIVER,SO2
+CLIMATE_DRIVER,SO₂
+CLIMATE_DRIVER,nitrogen dioxide
+CLIMATE_DRIVER,NO2
+CLIMATE_DRIVER,NO₂
+CLIMATE_DRIVER,hydrofluorocarbons
+CLIMATE_DRIVER,HFCs
+CLIMATE_DRIVER,perfluorocarbons
+CLIMATE_DRIVER,PFCs
+CLIMATE_DRIVER,sulfur hexafluoride
+CLIMATE_DRIVER,SF6
+CLIMATE_DRIVER,chlorofluorocarbons
+CLIMATE_DRIVER,CFCs
+CLIMATE_DRIVER,tropospheric ozone
+CLIMATE_DRIVER,black carbon
+CLIMATE_DRIVER,soot
+CLIMATE_DRIVER,aerosols
+CLIMATE_DRIVER,particulate matter
+CLIMATE_DRIVER,greenhouse gas
+CLIMATE_DRIVER,greenhouse gases
+CLIMATE_DRIVER,GHG
+CLIMATE_DRIVER,GHGs
+CLIMATE_DRIVER,radiative forcing
+CLIMATE_DRIVER,effective radiative forcing
+CLIMATE_DRIVER,ERF
+CLIMATE_DRIVER,anthropogenic forcing
+CLIMATE_DRIVER,climate forcing
+CLIMATE_DRIVER,carbon emissions
+CLIMATE_DRIVER,CO2 emissions
+CLIMATE_DRIVER,CO₂ emissions
+CLIMATE_DRIVER,greenhouse gas emissions
+CLIMATE_DRIVER,GHG emissions
+CLIMATE_DRIVER,fossil fuel emissions
+CLIMATE_DRIVER,carbon pollution
+CLIMATE_DRIVER,methane emissions
+CLIMATE_DRIVER,methane flux
+CLIMATE_DRIVER,permafrost methane
+CLIMATE_DRIVER,wetland methane
+CLIMATE_DRIVER,atmospheric CO2
+CLIMATE_DRIVER,atmospheric carbon dioxide
+CLIMATE_DRIVER,atmospheric methane
+CLIMATE_DRIVER,atmospheric concentration
+CLIMATE_DRIVER,carbon concentration
+CLIMATE_DRIVER,greenhouse effect
+CLIMATE_DRIVER,short-lived climate forcers
+CLIMATE_DRIVER,short-lived climate pollutants
+CLIMATE_DRIVER,albedo
+CLIMATE_DRIVER,surface albedo
+CLIMATE_DRIVER,ice-albedo feedback
+CLIMATE_DRIVER,solar radiation
+CLIMATE_DRIVER,solar irradiance
+CLIMATE_DRIVER,insolation
+CLIMATE_DRIVER,volcanic aerosols
+CLIMATE_DRIVER,stratospheric aerosols
+CLIMATE_VARIABLE,global temperature
+CLIMATE_VARIABLE,global mean temperature
+CLIMATE_VARIABLE,global surface temperature
+CLIMATE_VARIABLE,global mean surface temperature
+CLIMATE_VARIABLE,surface temperature
+CLIMATE_VARIABLE,air temperature
+CLIMATE_VARIABLE,land temperature
+CLIMATE_VARIABLE,ocean temperature
+CLIMATE_VARIABLE,sea surface temperature
+CLIMATE_VARIABLE,SST
+CLIMATE_VARIABLE,warming
+CLIMATE_VARIABLE,global warming
+CLIMATE_VARIABLE,temperature increase
+CLIMATE_VARIABLE,temperature rise
+CLIMATE_VARIABLE,temperature anomaly
+CLIMATE_VARIABLE,heat content
+CLIMATE_VARIABLE,ocean heat content
+CLIMATE_VARIABLE,upper ocean heat content
+CLIMATE_VARIABLE,warming trend
+CLIMATE_VARIABLE,temperature trend
+CLIMATE_VARIABLE,precipitation
+CLIMATE_VARIABLE,rainfall
+CLIMATE_VARIABLE,snowfall
+CLIMATE_VARIABLE,runoff
+CLIMATE_VARIABLE,evapotranspiration
+CLIMATE_VARIABLE,evaporation
+CLIMATE_VARIABLE,soil moisture
+CLIMATE_VARIABLE,streamflow
+CLIMATE_VARIABLE,river discharge
+CLIMATE_VARIABLE,groundwater
+CLIMATE_VARIABLE,freshwater availability
+CLIMATE_VARIABLE,water cycle
+CLIMATE_VARIABLE,hydrological cycle
+CLIMATE_VARIABLE,monsoon
+CLIMATE_VARIABLE,monsoon rainfall
+CLIMATE_VARIABLE,sea level
+CLIMATE_VARIABLE,sea level rise
+CLIMATE_VARIABLE,sea level change
+CLIMATE_VARIABLE,global mean sea level
+CLIMATE_VARIABLE,relative sea level
+CLIMATE_VARIABLE,sea level increase
+CLIMATE_VARIABLE,coastal inundation
+CLIMATE_VARIABLE,ocean pH
+CLIMATE_VARIABLE,ocean acidification
+CLIMATE_VARIABLE,ocean salinity
+CLIMATE_VARIABLE,ocean circulation
+CLIMATE_VARIABLE,thermohaline circulation
+CLIMATE_VARIABLE,AMOC
+CLIMATE_VARIABLE,Atlantic overturning circulation
+CLIMATE_VARIABLE,ocean oxygen
+CLIMATE_VARIABLE,ocean deoxygenation
+CLIMATE_VARIABLE,sea ice extent
+CLIMATE_VARIABLE,sea ice area
+CLIMATE_VARIABLE,sea ice thickness
+CLIMATE_VARIABLE,Arctic sea ice
+CLIMATE_VARIABLE,Antarctic sea ice
+CLIMATE_VARIABLE,snow cover
+CLIMATE_VARIABLE,snow depth
+CLIMATE_VARIABLE,permafrost temperature
+CLIMATE_VARIABLE,permafrost thaw
+CLIMATE_VARIABLE,active layer thickness
+CLIMATE_VARIABLE,atmospheric pressure
+CLIMATE_VARIABLE,humidity
+CLIMATE_VARIABLE,relative humidity
+CLIMATE_VARIABLE,wind speed
+CLIMATE_VARIABLE,wind pattern
+CLIMATE_VARIABLE,jet stream
+CLIMATE_VARIABLE,atmospheric circulation
+CLIMATE_VARIABLE,stratospheric temperature
+CLIMATE_VARIABLE,tropopause
+CLIMATE_VARIABLE,heat wave frequency
+CLIMATE_VARIABLE,cold spell
+CLIMATE_VARIABLE,carbon flux
+CLIMATE_VARIABLE,carbon uptake
+CLIMATE_VARIABLE,carbon sink
+CLIMATE_VARIABLE,carbon source
+CLIMATE_VARIABLE,net ecosystem production
+CLIMATE_VARIABLE,gross primary production
+CLIMATE_VARIABLE,GPP
+CLIMATE_VARIABLE,terrestrial carbon sink
+CLIMATE_VARIABLE,ocean carbon sink
+CLIMATE_VARIABLE,extreme heat
+CLIMATE_VARIABLE,extreme precipitation
+CLIMATE_VARIABLE,heavy rainfall
+CLIMATE_VARIABLE,flood frequency
+CLIMATE_VARIABLE,drought frequency
+CLIMATE_VARIABLE,fire weather
+ENVIRONMENTAL_EVENT,heat wave
+ENVIRONMENTAL_EVENT,heatwave
+ENVIRONMENTAL_EVENT,heat stress
+ENVIRONMENTAL_EVENT,heat extreme
+ENVIRONMENTAL_EVENT,extreme heat event
+ENVIRONMENTAL_EVENT,hot spell
+ENVIRONMENTAL_EVENT,urban heat island
+ENVIRONMENTAL_EVENT,cold wave
+ENVIRONMENTAL_EVENT,cold snap
+ENVIRONMENTAL_EVENT,frost
+ENVIRONMENTAL_EVENT,freeze
+ENVIRONMENTAL_EVENT,drought
+ENVIRONMENTAL_EVENT,flash drought
+ENVIRONMENTAL_EVENT,agricultural drought
+ENVIRONMENTAL_EVENT,hydrological drought
+ENVIRONMENTAL_EVENT,meteorological drought
+ENVIRONMENTAL_EVENT,wildfire
+ENVIRONMENTAL_EVENT,forest fire
+ENVIRONMENTAL_EVENT,bushfire
+ENVIRONMENTAL_EVENT,wildland fire
+ENVIRONMENTAL_EVENT,fire weather
+ENVIRONMENTAL_EVENT,fire season
+ENVIRONMENTAL_EVENT,flooding
+ENVIRONMENTAL_EVENT,flood
+ENVIRONMENTAL_EVENT,flash flood
+ENVIRONMENTAL_EVENT,coastal flooding
+ENVIRONMENTAL_EVENT,riverine flooding
+ENVIRONMENTAL_EVENT,compound flooding
+ENVIRONMENTAL_EVENT,inundation
+ENVIRONMENTAL_EVENT,storm surge
+ENVIRONMENTAL_EVENT,tidal flooding
+ENVIRONMENTAL_EVENT,nuisance flooding
+ENVIRONMENTAL_EVENT,hurricane
+ENVIRONMENTAL_EVENT,typhoon
+ENVIRONMENTAL_EVENT,cyclone
+ENVIRONMENTAL_EVENT,tropical cyclone
+ENVIRONMENTAL_EVENT,tropical storm
+ENVIRONMENTAL_EVENT,extratropical cyclone
+ENVIRONMENTAL_EVENT,tornado
+ENVIRONMENTAL_EVENT,windstorm
+ENVIRONMENTAL_EVENT,storm
+ENVIRONMENTAL_EVENT,extreme storm
+ENVIRONMENTAL_EVENT,bomb cyclone
+ENVIRONMENTAL_EVENT,glacier melt
+ENVIRONMENTAL_EVENT,glacial retreat
+ENVIRONMENTAL_EVENT,ice sheet collapse
+ENVIRONMENTAL_EVENT,ice shelf collapse
+ENVIRONMENTAL_EVENT,permafrost thaw
+ENVIRONMENTAL_EVENT,permafrost collapse
+ENVIRONMENTAL_EVENT,thermokarst
+ENVIRONMENTAL_EVENT,glacial lake outburst flood
+ENVIRONMENTAL_EVENT,GLOF
+ENVIRONMENTAL_EVENT,Arctic sea ice loss
+ENVIRONMENTAL_EVENT,Arctic sea ice decline
+ENVIRONMENTAL_EVENT,Antarctic ice loss
+ENVIRONMENTAL_EVENT,coral bleaching
+ENVIRONMENTAL_EVENT,mass bleaching event
+ENVIRONMENTAL_EVENT,marine heatwave
+ENVIRONMENTAL_EVENT,harmful algal bloom
+ENVIRONMENTAL_EVENT,algal bloom
+ENVIRONMENTAL_EVENT,dead zone
+ENVIRONMENTAL_EVENT,hypoxic event
+ENVIRONMENTAL_EVENT,ocean dead zone
+ENVIRONMENTAL_EVENT,red tide
+ENVIRONMENTAL_EVENT,landslide
+ENVIRONMENTAL_EVENT,mudslide
+ENVIRONMENTAL_EVENT,erosion
+ENVIRONMENTAL_EVENT,desertification
+ENVIRONMENTAL_EVENT,land degradation
+ENVIRONMENTAL_EVENT,soil erosion
+ENVIRONMENTAL_EVENT,dust storm
+ENVIRONMENTAL_EVENT,sandstorm
+ECOSYSTEM,tropical forest
+ECOSYSTEM,tropical rainforest
+ECOSYSTEM,rainforest
+ECOSYSTEM,Amazon rainforest
+ECOSYSTEM,Amazon basin
+ECOSYSTEM,Amazon
+ECOSYSTEM,boreal forest
+ECOSYSTEM,taiga
+ECOSYSTEM,temperate forest
+ECOSYSTEM,deciduous forest
+ECOSYSTEM,coniferous forest
+ECOSYSTEM,cloud forest
+ECOSYSTEM,montane forest
+ECOSYSTEM,grassland
+ECOSYSTEM,savanna
+ECOSYSTEM,shrubland
+ECOSYSTEM,tundra
+ECOSYSTEM,arctic tundra
+ECOSYSTEM,alpine tundra
+ECOSYSTEM,wetland
+ECOSYSTEM,peatland
+ECOSYSTEM,bog
+ECOSYSTEM,marsh
+ECOSYSTEM,swamp
+ECOSYSTEM,mangrove
+ECOSYSTEM,mangrove forest
+ECOSYSTEM,mangroves
+ECOSYSTEM,desert
+ECOSYSTEM,arid land
+ECOSYSTEM,semi-arid
+ECOSYSTEM,dryland
+ECOSYSTEM,Mediterranean ecosystem
+ECOSYSTEM,freshwater ecosystem
+ECOSYSTEM,river ecosystem
+ECOSYSTEM,lake ecosystem
+ECOSYSTEM,stream
+ECOSYSTEM,river delta
+ECOSYSTEM,floodplain
+ECOSYSTEM,estuary
+ECOSYSTEM,glacier
+ECOSYSTEM,glaciers
+ECOSYSTEM,ice sheet
+ECOSYSTEM,ice sheets
+ECOSYSTEM,Greenland ice sheet
+ECOSYSTEM,Antarctic ice sheet
+ECOSYSTEM,sea ice ecosystem
+ECOSYSTEM,permafrost ecosystem
+ECOSYSTEM,Arctic ecosystem
+ECOSYSTEM,Antarctic ecosystem
+ECOSYSTEM,cryosphere
+ECOSYSTEM,coral reef
+ECOSYSTEM,coral reefs
+ECOSYSTEM,reef ecosystem
+ECOSYSTEM,Great Barrier Reef
+ECOSYSTEM,kelp forest
+ECOSYSTEM,seagrass meadow
+ECOSYSTEM,seagrass
+ECOSYSTEM,salt marsh
+ECOSYSTEM,coastal wetland
+ECOSYSTEM,intertidal zone
+ECOSYSTEM,deep sea
+ECOSYSTEM,deep ocean
+ECOSYSTEM,open ocean
+ECOSYSTEM,coastal ecosystem
+ECOSYSTEM,marine ecosystem
+ECOSYSTEM,pelagic zone
+ECOSYSTEM,benthic zone
+ECOSYSTEM,mountain ecosystem
+ECOSYSTEM,alpine ecosystem
+ECOSYSTEM,highland
+ECOSYSTEM,Himalayan ecosystem
+ECOSYSTEM,Andean ecosystem
+SPECIES,coral
+SPECIES,corals
+SPECIES,coral species
+SPECIES,fish
+SPECIES,marine fish
+SPECIES,reef fish
+SPECIES,plankton
+SPECIES,phytoplankton
+SPECIES,zooplankton
+SPECIES,krill
+SPECIES,marine mammals
+SPECIES,whale
+SPECIES,dolphin
+SPECIES,seal
+SPECIES,sea turtle
+SPECIES,marine turtle
+SPECIES,polar bear
+SPECIES,walrus
+SPECIES,narwhal
+SPECIES,seabird
+SPECIES,penguin
+SPECIES,albatross
+SPECIES,oyster
+SPECIES,shellfish
+SPECIES,bivalve
+SPECIES,mollusc
+SPECIES,sea urchin
+SPECIES,starfish
+SPECIES,echinoderm
+SPECIES,Arctic fox
+SPECIES,lemming
+SPECIES,reindeer
+SPECIES,caribou
+SPECIES,moose
+SPECIES,elephant
+SPECIES,lion
+SPECIES,cheetah
+SPECIES,migratory bird
+SPECIES,songbird
+SPECIES,raptor
+SPECIES,tree species
+SPECIES,boreal tree
+SPECIES,spruce
+SPECIES,pine
+SPECIES,deciduous tree
+SPECIES,mangrove species
+SPECIES,alpine plant
+SPECIES,tundra plant
+SPECIES,crop
+SPECIES,crops
+SPECIES,wheat
+SPECIES,maize
+SPECIES,rice
+SPECIES,soybean
+SPECIES,insect
+SPECIES,beetle
+SPECIES,butterfly
+SPECIES,bee
+SPECIES,pollinator
+SPECIES,monarch butterfly
+SPECIES,amphibian
+SPECIES,frog
+SPECIES,salamander
+SPECIES,reptile
+SPECIES,lizard
+SPECIES,fungi
+SPECIES,soil microbe
+SPECIES,microbiome
+SPECIES,species
+SPECIES,endemic species
+SPECIES,native species
+SPECIES,invasive species
+SPECIES,migratory species
+SPECIES,keystone species
+SPECIES,apex predator
+HUMAN_ACTIVITY,fossil fuel burning
+HUMAN_ACTIVITY,fossil fuel combustion
+HUMAN_ACTIVITY,coal burning
+HUMAN_ACTIVITY,coal combustion
+HUMAN_ACTIVITY,coal mining
+HUMAN_ACTIVITY,oil extraction
+HUMAN_ACTIVITY,oil production
+HUMAN_ACTIVITY,fracking
+HUMAN_ACTIVITY,natural gas extraction
+HUMAN_ACTIVITY,gas flaring
+HUMAN_ACTIVITY,fossil fuel use
+HUMAN_ACTIVITY,fossil fuel consumption
+HUMAN_ACTIVITY,deforestation
+HUMAN_ACTIVITY,forest clearing
+HUMAN_ACTIVITY,forest loss
+HUMAN_ACTIVITY,logging
+HUMAN_ACTIVITY,illegal logging
+HUMAN_ACTIVITY,land use change
+HUMAN_ACTIVITY,land cover change
+HUMAN_ACTIVITY,land degradation
+HUMAN_ACTIVITY,overgrazing
+HUMAN_ACTIVITY,urbanisation
+HUMAN_ACTIVITY,urbanization
+HUMAN_ACTIVITY,urban expansion
+HUMAN_ACTIVITY,agricultural expansion
+HUMAN_ACTIVITY,cropland expansion
+HUMAN_ACTIVITY,agriculture
+HUMAN_ACTIVITY,farming
+HUMAN_ACTIVITY,livestock farming
+HUMAN_ACTIVITY,rice cultivation
+HUMAN_ACTIVITY,paddy cultivation
+HUMAN_ACTIVITY,fertiliser use
+HUMAN_ACTIVITY,nitrogen fertiliser
+HUMAN_ACTIVITY,irrigation
+HUMAN_ACTIVITY,intensive farming
+HUMAN_ACTIVITY,industrialisation
+HUMAN_ACTIVITY,industrialization
+HUMAN_ACTIVITY,industrial emissions
+HUMAN_ACTIVITY,manufacturing
+HUMAN_ACTIVITY,transportation emissions
+HUMAN_ACTIVITY,aviation emissions
+HUMAN_ACTIVITY,shipping emissions
+HUMAN_ACTIVITY,road transport
+HUMAN_ACTIVITY,waste management
+HUMAN_ACTIVITY,landfill
+HUMAN_ACTIVITY,plastic pollution
+HUMAN_ACTIVITY,ocean pollution
+HUMAN_ACTIVITY,air pollution
+HUMAN_ACTIVITY,water pollution
+HUMAN_ACTIVITY,reforestation
+HUMAN_ACTIVITY,afforestation
+HUMAN_ACTIVITY,tree planting
+HUMAN_ACTIVITY,forest restoration
+HUMAN_ACTIVITY,ecosystem restoration
+HUMAN_ACTIVITY,carbon capture
+HUMAN_ACTIVITY,carbon sequestration
+HUMAN_ACTIVITY,direct air capture
+HUMAN_ACTIVITY,DAC
+HUMAN_ACTIVITY,bioenergy
+HUMAN_ACTIVITY,BECCS
+HUMAN_ACTIVITY,solar energy
+HUMAN_ACTIVITY,solar power
+HUMAN_ACTIVITY,wind energy
+HUMAN_ACTIVITY,wind power
+HUMAN_ACTIVITY,renewable energy
+HUMAN_ACTIVITY,clean energy
+HUMAN_ACTIVITY,energy efficiency
+HUMAN_ACTIVITY,electrification
+HUMAN_ACTIVITY,sustainable agriculture
+HUMAN_ACTIVITY,conservation agriculture
+GEOGRAPHIC_LOCATION,Arctic
+GEOGRAPHIC_LOCATION,Antarctic
+GEOGRAPHIC_LOCATION,Antarctica
+GEOGRAPHIC_LOCATION,North Pole
+GEOGRAPHIC_LOCATION,South Pole
+GEOGRAPHIC_LOCATION,Greenland
+GEOGRAPHIC_LOCATION,Iceland
+GEOGRAPHIC_LOCATION,Siberia
+GEOGRAPHIC_LOCATION,Alaska
+GEOGRAPHIC_LOCATION,Himalayas
+GEOGRAPHIC_LOCATION,Hindu Kush
+GEOGRAPHIC_LOCATION,Karakoram
+GEOGRAPHIC_LOCATION,Alps
+GEOGRAPHIC_LOCATION,Andes
+GEOGRAPHIC_LOCATION,Rocky Mountains
+GEOGRAPHIC_LOCATION,Tibetan Plateau
+GEOGRAPHIC_LOCATION,Hindu Kush Himalaya
+GEOGRAPHIC_LOCATION,Pacific Ocean
+GEOGRAPHIC_LOCATION,Atlantic Ocean
+GEOGRAPHIC_LOCATION,Indian Ocean
+GEOGRAPHIC_LOCATION,Arctic Ocean
+GEOGRAPHIC_LOCATION,Southern Ocean
+GEOGRAPHIC_LOCATION,Mediterranean Sea
+GEOGRAPHIC_LOCATION,Caribbean Sea
+GEOGRAPHIC_LOCATION,Coral Triangle
+GEOGRAPHIC_LOCATION,Gulf of Mexico
+GEOGRAPHIC_LOCATION,Bay of Bengal
+GEOGRAPHIC_LOCATION,Arabian Sea
+GEOGRAPHIC_LOCATION,Amazon
+GEOGRAPHIC_LOCATION,Congo Basin
+GEOGRAPHIC_LOCATION,Mekong
+GEOGRAPHIC_LOCATION,Southeast Asia
+GEOGRAPHIC_LOCATION,South Asia
+GEOGRAPHIC_LOCATION,East Asia
+GEOGRAPHIC_LOCATION,Sub-Saharan Africa
+GEOGRAPHIC_LOCATION,Sahel
+GEOGRAPHIC_LOCATION,Horn of Africa
+GEOGRAPHIC_LOCATION,Small Island Developing States
+GEOGRAPHIC_LOCATION,SIDS
+GEOGRAPHIC_LOCATION,Pacific Islands
+GEOGRAPHIC_LOCATION,Caribbean
+GEOGRAPHIC_LOCATION,Bangladesh
+GEOGRAPHIC_LOCATION,Maldives
+GEOGRAPHIC_LOCATION,Tuvalu
+GEOGRAPHIC_LOCATION,Netherlands
+GEOGRAPHIC_LOCATION,Florida
+GEOGRAPHIC_LOCATION,Louisiana
+GEOGRAPHIC_LOCATION,Ganges delta
+GEOGRAPHIC_LOCATION,Mekong delta
+GEOGRAPHIC_LOCATION,Nile delta
+GEOGRAPHIC_LOCATION,coastal regions
+GEOGRAPHIC_LOCATION,low-lying coastal areas
+GEOGRAPHIC_LOCATION,tropics
+GEOGRAPHIC_LOCATION,tropical regions
+GEOGRAPHIC_LOCATION,subtropics
+GEOGRAPHIC_LOCATION,boreal region
+GEOGRAPHIC_LOCATION,temperate region
+GEOGRAPHIC_LOCATION,arid region
+GEOGRAPHIC_LOCATION,semi-arid region
+GEOGRAPHIC_LOCATION,global
+GEOGRAPHIC_LOCATION,worldwide
+GEOGRAPHIC_LOCATION,global scale
+GEOGRAPHIC_LOCATION,Northern Hemisphere
+GEOGRAPHIC_LOCATION,Southern Hemisphere
+POLICY,Paris Agreement
+POLICY,Paris accord
+POLICY,Kyoto Protocol
+POLICY,UNFCCC
+POLICY,United Nations Framework Convention on Climate Change
+POLICY,COP26
+POLICY,COP27
+POLICY,COP28
+POLICY,COP21
+POLICY,Glasgow Climate Pact
+POLICY,Montreal Protocol
+POLICY,net zero
+POLICY,net-zero emissions
+POLICY,carbon neutrality
+POLICY,carbon neutral
+POLICY,climate neutrality
+POLICY,1.5 degree target
+POLICY,1.5°C target
+POLICY,2 degree target
+POLICY,2°C target
+POLICY,emission reduction target
+POLICY,NDC
+POLICY,nationally determined contribution
+POLICY,nationally determined contributions
+POLICY,long-term strategy
+POLICY,carbon budget
+POLICY,carbon tax
+POLICY,carbon pricing
+POLICY,carbon price
+POLICY,emissions trading
+POLICY,cap and trade
+POLICY,cap-and-trade
+POLICY,carbon market
+POLICY,carbon credit
+POLICY,carbon offset
+POLICY,EU ETS
+POLICY,emissions trading scheme
+POLICY,climate finance
+POLICY,green finance
+POLICY,climate investment
+POLICY,green bond
+POLICY,loss and damage
+POLICY,adaptation finance
+POLICY,climate fund
+POLICY,Green Climate Fund
+POLICY,emission regulation
+POLICY,emissions regulation
+POLICY,renewable energy policy
+POLICY,feed-in tariff
+POLICY,carbon standard
+POLICY,climate legislation
+POLICY,climate policy
+POLICY,climate action
+POLICY,mitigation policy
+POLICY,adaptation policy
+POLICY,just transition
+POLICY,climate justice
+POLICY,nature-based solutions
+POLICY,NbS
+POLICY,ecosystem-based adaptation
