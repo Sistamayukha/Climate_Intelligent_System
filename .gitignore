@@ -1,0 +1,15 @@
+# Large model files
+models/
+*.zip
+*.pt
+*.bin
+*.safetensors
+
+# Large data files
+data/processed/climate_bio.txt
+data/processed/merged_annotations.json
+
+# Checkpoints
+.ipynb_checkpoints/
+__pycache__/
+*/.ipynb_checkpoints/
