@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Intelligence System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>🌍 Climate Intelligence System</h1>
+        <p>Explore cause-effect relationships in climate science literature</p>
+    </div>
+</header>
+
+<nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('query', this)">Query Engine</button>
+    <button class="tab-btn" onclick="showTab('graph', this)">Knowledge Graph</button>
+    <button class="tab-btn" onclick="showTab('dashboard', this)">Influence Dashboard</button>
+</nav>
+
+<main>
+
+    <!-- QUERY TAB -->
+    <div id="tab-query" class="tab-content active">
+        <div class="query-box">
+            <h2>Ask a Climate Question</h2>
+            <div class="input-row">
+                <input type="text" id="query-input"
+                       placeholder="e.g. What causes coral bleaching?"
+                       onkeydown="if(event.key==='Enter') runQuery()">
+                <select id="query-type">
+                    <option value="causes">What causes X?</option>
+                    <option value="impacts">What is the impact of X?</option>
+                </select>
+                <button onclick="runQuery()">Search</button>
+            </div>
+            <div class="example-queries">
+                <span>Try: </span>
+                <a onclick="setQuery('coral bleaching','causes')">coral bleaching</a>
+                <a onclick="setQuery('sea level rise','causes')">sea level rise</a>
+                <a onclick="setQuery('deforestation','impacts')">deforestation impacts</a>
+                <a onclick="setQuery('climate change','impacts')">climate change impacts</a>
+            </div>
+        </div>
+        <div id="query-results" class="results-box"></div>
+    </div>
+
+    <!-- GRAPH TAB -->
+    <div id="tab-graph" class="tab-content">
+        <div class="graph-controls">
+            <h2>Interactive Knowledge Graph</h2>
+            <p>Top 80 nodes by PageRank. Drag nodes to explore connections.</p>
+            <div class="legend" id="legend"></div>
+        </div>
+        <div id="graph-container">
+            <svg id="kg-svg"></svg>
+            <div id="node-tooltip" class="tooltip"></div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD TAB -->
+    <div id="tab-dashboard" class="tab-content">
+        <h2>Influence Ranking Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="dash-card">
+                <h3>🔴 Top Causal Drivers</h3>
+                <p class="dash-desc">
+                    Entities with highest out-degree centrality
+                </p>
+                <div id="dash-drivers"></div>
+            </div>
+            <div class="dash-card">
+                <h3>🟢 Most Impacted</h3>
+                <p class="dash-desc">
+                    Entities with highest PageRank
+                </p>
+                <div id="dash-impacted"></div>
+            </div>
+            <div class="dash-card">
+                <h3>🔵 Key Intermediaries</h3>
+                <p class="dash-desc">
+                    Entities with highest betweenness centrality
+                </p>
+                <div id="dash-between"></div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="/static/graph.js"></script>
+<script>
+
+// ── Tab switching ──────────────────────────────────────────
+function showTab(name, btn) {
+    document.querySelectorAll(".tab-content").forEach(
+        t => t.classList.remove("active")
+    );
+    document.querySelectorAll(".tab-btn").forEach(
+        b => b.classList.remove("active")
+    );
+    document.getElementById("tab-" + name).classList.add("active");
+    btn.classList.add("active");
+    if (name === "graph")     loadGraph();
+    if (name === "dashboard") loadDashboard();
+}
+
+// ── Query engine ───────────────────────────────────────────
+function setQuery(text, type) {
+    document.getElementById("query-input").value = text;
+    document.getElementById("query-type").value  = type;
+    runQuery();
+}
+
+async function runQuery() {
+    const query = document.getElementById("query-input").value.trim();
+    const type  = document.getElementById("query-type").value;
+    if (!query) return;
+
+    const box = document.getElementById("query-results");
+    box.innerHTML = '<div class="loading">🔍 Searching knowledge graph...</div>';
+
+    try {
+        const res  = await fetch("/api/query", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({query, type})
+        });
+        const data = await res.json();
+        renderResults(data, box);
+    } catch(err) {
+        box.innerHTML = '<div class="no-results">Error connecting to server.</div>';
+    }
+}
+
+function renderResults(data, box) {
+    if (!data.results || data.results.length === 0) {
+        box.innerHTML = `
+            <div class="no-results">
+                No results found for "<b>${data.entity}</b>".
+                Try a different entity name.
+            </div>`;
+        return;
+    }
+
+    const title = data.type === "causes"
+        ? `Causes of "<b>${data.entity}</b>"`
+        : `Impacts of "<b>${data.entity}</b>"`;
+
+    let html = `
+        <div class="result-header">
+            ${title} — ${data.results.length} results found
+        </div>`;
+
+    data.results.forEach((r, i) => {
+        const conf = Math.round(r.confidence * 100);
+        const bar  = `
+            <div class="conf-bar">
+                <div class="conf-fill" style="width:${conf}%"></div>
+            </div>`;
+
+        if (data.type === "causes") {
+            html += `
+            <div class="result-card">
+                <div class="result-top">
+                    <span class="entity-badge type-${r.cause_type}">
+                        ${r.cause_type.replace(/_/g," ")}
+                    </span>
+                    <span class="result-name">${r.cause}</span>
+                    <span class="hops-badge">
+                        ${r.hops} hop${r.hops>1?'s':''}
+                    </span>
+                </div>
+                <div class="result-rel">
+                    <span class="rel-label">${r.relation}</span>
+                    ${bar}
+                    <span class="conf-text">${conf}%</span>
+                </div>
+            </div>`;
+        } else {
+            const path = r.pathway.map(p =>
+                `<span class="path-node">${p.from}</span>
+                 <span class="path-rel">–${p.relation}→</span>
+                 <span class="path-node">${p.to}</span>`
+            ).join(" ");
+
+            html += `
+            <div class="result-card">
+                <div class="result-top">
+                    <span class="entity-badge type-${r.impact_type}">
+                        ${r.impact_type.replace(/_/g," ")}
+                    </span>
+                    <span class="result-name">${r.impact}</span>
+                    <span class="hops-badge">
+                        ${r.hops} hop${r.hops>1?'s':''}
+                    </span>
+                </div>
+                <div class="pathway-chain">${path}</div>
+                <div class="result-rel">
+                    ${bar}
+                    <span class="conf-text">${conf}%</span>
+                </div>
+            </div>`;
+        }
+    });
+
+    box.innerHTML = html;
+}
+
+// ── Dashboard ──────────────────────────────────────────────
+async function loadDashboard() {
+    try {
+        const res  = await fetch("/api/dashboard");
+        const data = await res.json();
+        renderBar("dash-drivers",  data.drivers,  "out-degree");
+        renderBar("dash-impacted", data.impacted, "pagerank");
+        renderBar("dash-between",  data.between,  "betweenness");
+    } catch(err) {
+        console.error("Dashboard load error:", err);
+    }
+}
+
+function renderBar(id, items, metric) {
+    if (!items || items.length === 0) return;
+    const max = items[0].score;
+    const el  = document.getElementById(id);
+    el.innerHTML = items.map(item => `
+        <div class="bar-row">
+            <span class="bar-label type-${item.type}" title="${item.name}">
+                ${item.name}
+            </span>
+            <div class="bar-track">
+                <div class="bar-fill"
+                     style="width:${Math.round(item.score/max*100)}%;
+                            background:${getColor(item.type)}">
+                </div>
+            </div>
+            <span class="bar-score">${item.score}</span>
+        </div>`
+    ).join("");
+}
+
+function getColor(type) {
+    const colors = {
+        Climate_Driver:   "#5DCAA5",
+        Climate_Variable: "#378ADD",
+        Env_Event:        "#D85A30",
+        Ecosystem:        "#639922",
+        Species:          "#D4537E",
+        Human_Activity:   "#BA7517",
+        Geo_Location:     "#7F77DD",
+        Policy:           "#888780",
+        Unknown:          "#555"
+    };
+    return colors[type] || "#555";
+}
+
+</script>
+</body>
+</html>
