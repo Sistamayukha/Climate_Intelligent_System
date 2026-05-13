@@ -51,6 +51,7 @@ Query Engine + Web Interface (Flask + D3.js)
 
 ### NER Results
 | Model | Precision | Recall | F1 |
+|--------|-----|
 | SciSpaCy (baseline) | 0.0175 | 0.0624 | 0.0273 |
 | Dictionary Matching (baseline) | 0.5753 | 0.2838 | 0.3801 |
 | **Our SciBERT NER** | **0.3710** | **0.3108** | **0.3382** |
@@ -132,7 +133,7 @@ jupyter notebook notebooks/Climate_Data_Abstraction.ipynb
 jupyter notebook notebooks/annotation_processing.ipynb
 ```
 
-### 4. NER Training (Google Colab recommended)
+### 4. NER Training
 ```bash
 jupyter notebook notebooks/scibert_ner_training.ipynb
 ```
