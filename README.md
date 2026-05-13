@@ -51,7 +51,7 @@ Query Engine + Web Interface (Flask + D3.js)
 
 ### NER Results
 | Model | Precision | Recall | F1 |
-|--------|-----|
+|-------|-----------|--------|-----|
 | SciSpaCy (baseline) | 0.0175 | 0.0624 | 0.0273 |
 | Dictionary Matching (baseline) | 0.5753 | 0.2838 | 0.3801 |
 | **Our SciBERT NER** | **0.3710** | **0.3108** | **0.3382** |
@@ -138,7 +138,7 @@ jupyter notebook notebooks/annotation_processing.ipynb
 jupyter notebook notebooks/scibert_ner_training.ipynb
 ```
 
-### 5. RE Training (GPU recommended)
+### 5. RE Training
 ```bash
 jupyter notebook notebooks/scibert_re_training.ipynb
 ```
