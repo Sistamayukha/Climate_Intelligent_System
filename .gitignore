@@ -17,6 +17,3 @@ __pycache__/
 data/annotated/ashley_annotations.json
 data/annotated/harshini_annotations.json
 data/annotated/mayukha_annotations.json
-data/processed/climate_train.txt
-data/processed/climate_dev.txt
-data/processed/climate_test.txt
