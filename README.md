@@ -50,6 +50,64 @@ Analytics ready!
 
 Running on http://127.0.0.1:5000
 ### Step 4 — Open in browser
+
+---
+
+## What the Interface Does
+
+### Tab 1 — Query Engine
+Type a climate entity and select query type:
+
+| Query | Type | Expected Result |
+|-------|------|----------------|
+| `coral bleaching` | What causes X? | global warming, ocean temperature, sea surface temperature |
+| `deforestation` | What is the impact of X? | 3-hop chain: deforestation → climate change → sea-level rise → coastal wetlands |
+| `sea level rise` | What causes X? | storm surge, greenhouse gas, hurricane |
+| `climate change` | What is the impact of X? | flooding, coral reef, wildfire, heatwaves |
+| `glacier` | What is the impact of X? | sea level rise, coastal areas |
+
+Results show: entity type badge, relation type, confidence score bar, hop count.
+
+### Tab 2 — Knowledge Graph
+- Interactive D3.js force-directed graph (top 80 nodes by PageRank)
+- Node size = PageRank score
+- Node color = entity type (see legend)
+- Hover over node = shows type, PageRank, betweenness, out-degree
+- Drag nodes to explore | Scroll to zoom | Click-drag to pan
+
+### Tab 3 — Influence Dashboard
+Three ranked bar charts:
+- **Top Causal Drivers** — by out-degree centrality (expected top: climate change)
+- **Most Impacted** — by PageRank (expected top: arctic)
+- **Key Intermediaries** — by betweenness centrality (expected top: global, coastal)
+
+---
+
+## Key Files
+### Web Application
+src/query_engine/app.py          ← Flask backend, graph traversal, API routes
+src/query_engine/templates/index.html  ← Frontend HTML
+src/query_engine/static/style.css      ← CSS styling
+src/query_engine/static/graph.js       ← D3.js graph visualization
+
+### Precomputed Data (no retraining needed)
+data/raw/climate_abstracts.csv         ← 601 collected abstracts
+data/processed/climate_kg.pkl          ← Knowledge Graph (loads directly)
+data/processed/climate_kg.json         ← Knowledge Graph (fallback)
+data/processed/climate_triples.csv     ← 4,478 extracted triples
+data/processed/climate_train.txt       ← BIO training set (210 sentences)
+data/processed/climate_test.txt        ← BIO test set (27 sentences)
+data/annotated/term_lists.csv          ← 569 entity terms used for annotation
+
+### Training Notebooks (reproducibility — requires GPU/Colab)
+notebooks/01_data_collection.ipynb     ← Semantic Scholar API collection
+notebooks/02_preprocessing.ipynb       ← BIO format conversion
+notebooks/03_preannotate.ipynb         ← Dictionary pre-annotation
+notebooks/scibert_ner_training.ipynb   ← SciBERT NER fine-tuning (Colab+GPU)
+notebooks/scibert_re_training.ipynb    ← SciBERT RE fine-tuning (Colab+GPU)
+notebooks/knowledge_graph.ipynb        ← KG construction + graph analytics
+notebooks/baselines.ipynb              ← Baseline comparisons (Colab)
+
 ### Step 5 — Try these example queries
 
 **Query Engine tab:**
@@ -70,8 +128,6 @@ Running on http://127.0.0.1:5000
 - View key intermediaries by betweenness centrality
 
 ---
----
-
 ##System Results
 
 ### NER Evaluation
@@ -129,7 +185,7 @@ Graph Analytics (PageRank, Betweenness, Degree Centrality)
 Query Engine + Web Interface (Flask + D3.js) 
 ---
 
-## 📓 Notebooks — For Reproducibility Only
+## Notebooks — For Reproducibility Only
 
 > These notebooks are provided for reproducibility. 
 > You do NOT need to run them to use the demo.
@@ -146,9 +202,7 @@ Query Engine + Web Interface (Flask + D3.js)
 | baselines.ipynb | Run baseline comparisons | Google Colab |
 
 ---
----
-
-## 🔗 Entity Schema (8 types)
+##  Entity Schema (8 types)
 | Entity | Examples |
 |--------|---------|
 | Climate_Driver | CO₂, methane, greenhouse gases |
@@ -160,7 +214,7 @@ Query Engine + Web Interface (Flask + D3.js)
 | Geo_Location | Arctic, Bangladesh, Pacific Ocean |
 | Policy | Paris Agreement, carbon tax |
 
-## 🔗 Relation Schema (7 types)
+##  Relation Schema (7 types)
 `causes` | `increases` | `decreases` | `affects` | 
 `contributes_to` | `occurs_in` | `mitigates`
 
