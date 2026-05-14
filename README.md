@@ -220,6 +220,240 @@ Query Engine + Web Interface (Flask + D3.js)
 
 
 ---
+---
+
+## 🔬 Full Pipeline — Running End-to-End (For Verification)
+
+> This section documents how to reproduce the entire pipeline 
+> from scratch. Each step builds on the previous one.
+> **Steps 1-3 run locally. Steps 4-5 require Google Colab with GPU.**
+
+---
+
+### STEP 1 — Data Collection
+**Notebook:** `notebooks/01_data_collection.ipynb`
+**Run on:** Local machine (Jupyter)
+**Time:** ~20 minutes
+
+```bash
+py -3.11 -m pip install requests pandas langdetect backoff
+jupyter notebook notebooks/01_data_collection.ipynb
+```
+
+What it does:
+- Queries Semantic Scholar API with 15 IPCC-derived keywords
+- Cleans and deduplicates abstracts
+- Applies language detection (English only)
+- Filters by field of study
+
+Output: `data/raw/climate_abstracts.csv` (601 abstracts)
+
+---
+
+### STEP 2 — Preprocessing & BIO Conversion
+**Notebook:** `notebooks/02_preprocessing.ipynb`
+**Run on:** Local machine (Jupyter)
+**Time:** ~5 minutes
+
+```bash
+py -3.11 -m pip install pandas scikit-learn
+jupyter notebook notebooks/02_preprocessing.ipynb
+```
+
+What it does:
+- Merges 3 annotator JSON files from Label Studio
+- Standardizes inconsistent entity label names
+- Converts annotations to BIO format
+- Splits into train (80%) / dev (10%) / test (20%)
+
+Input: 
+- `data/annotated/mayukha_annotations.json`
+- `data/annotated/harshini_annotations.json`  
+- `data/annotated/ashley_annotations.json`
+
+Output:
+- `data/processed/climate_train.txt` (210 sentences)
+- `data/processed/climate_dev.txt` (26 sentences)
+- `data/processed/climate_test.txt` (27 sentences)
+
+> **Note:** The 3 annotation JSON files are not in the repo
+> (too large). The processed BIO files are already provided.
+
+---
+
+### STEP 3 — Dictionary Pre-annotation
+**Notebook:** `notebooks/03_preannotate.ipynb`
+**Run on:** Local machine (Jupyter)
+**Time:** ~5 minutes
+
+```bash
+jupyter notebook notebooks/03_preannotate.ipynb
+```
+
+What it does:
+- Uses spaCy PhraseMatcher with term_lists.csv
+- Automatically pre-annotates all 601 abstracts
+- Generates Label Studio compatible JSON
+
+Input: `data/raw/climate_abstracts.csv`, `data/annotated/term_lists.csv`
+Output: `data/annotated/preannotated.json`
+
+---
+
+### STEP 4 — SciBERT NER Training
+**Notebook:** `notebooks/scibert_ner_training.ipynb`
+**Run on:** Google Colab (T4 GPU required)
+**Time:** ~45 minutes
+
+Upload to Colab:
+- `data/processed/climate_train.txt`
+- `data/processed/climate_dev.txt`
+- `data/processed/climate_test.txt`
+
+```python
+# Cell 1 — Install
+!pip install transformers datasets seqeval torch scikit-learn
+```
+
+What it does:
+- Loads allenai/scibert_scivocab_uncased
+- Fine-tunes for token classification (BIO tagging)
+- Round 1: trains on 210 gold sentences (5 epochs)
+- Generates 1,026 silver labels via model self-labeling
+- Round 2: retrains on 1,236 combined sentences (10 epochs)
+- Evaluates against SciSpaCy and dictionary baselines
+
+Results:
+- SciBERT NER F1 = **0.3382**
+- SciSpaCy baseline F1 = 0.0273
+- Dictionary baseline F1 = 0.3801
+
+Output: `scibert_ner_climate_v2/` (model folder)
+
+---
+
+### STEP 5 — SciBERT RE Training
+**Notebook:** `notebooks/scibert_re_training.ipynb`
+**Run on:** Google Colab (T4 GPU required)
+**Time:** ~60 minutes
+
+Upload to Colab (same files as Step 4):
+- `data/processed/climate_train.txt`
+- `data/processed/climate_dev.txt`
+- `data/processed/climate_test.txt`
+
+```python
+# Cell 1 — Install
+!pip install transformers torch scikit-learn pandas seqeval
+```
+
+What it does:
+- Extracts entity pairs from BIO sentences
+- Applies distant supervision to assign relation labels
+- Adds [E1]/[/E1]/[E2]/[/E2] markers around entity spans
+- Fine-tunes SciBERT as pairwise span classifier
+- Trains on 14,000 balanced entity pairs (5 epochs)
+- Evaluates against OpenIE rule-based baseline
+
+Results:
+- SciBERT RE F1 = **0.4118**
+- OpenIE baseline F1 = 0.0217
+
+Output: `scibert_re_climate/` (model folder)
+
+---
+
+### STEP 6 — Knowledge Graph Construction
+**Notebook:** `notebooks/knowledge_graph.ipynb`
+**Run on:** Local machine (Jupyter)
+**Time:** ~50 minutes (NER+RE inference on 601 abstracts)
+
+```bash
+py -3.11 -m pip install networkx transformers torch pandas matplotlib pyvis
+jupyter notebook notebooks/knowledge_graph.ipynb
+```
+
+Requires (from Steps 4 & 5):
+- `models/scibert_ner_climate_v2/` (NER model folder)
+- `models/scibert_re_climate/` (RE model folder)
+
+What it does:
+- Runs NER inference on all 601 abstracts
+- Runs RE inference on all entity pairs
+- Extracts 4,478 triples with confidence scores
+- Builds NetworkX DiGraph
+- Computes PageRank, betweenness, degree centrality
+- Extracts multi-hop causal pathways
+- Saves graph as pkl and JSON
+
+Output:
+- `data/processed/climate_triples.csv`
+- `data/processed/climate_kg.pkl`
+- `data/processed/climate_kg.json`
+- `outputs/climate_kg_visualization.png`
+
+---
+
+### STEP 7 — Baseline Comparisons
+**Notebook:** `notebooks/baselines.ipynb`
+**Run on:** Google Colab
+**Time:** ~15 minutes
+
+```python
+# Cell 1 — Install
+!pip install scispacy seqeval
+!pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_md-0.5.4.tar.gz
+```
+
+Upload to Colab:
+- `data/processed/climate_test.txt`
+- `data/annotated/term_lists.csv`
+
+What it does:
+- Runs SciSpaCy NER on test set
+- Runs Dictionary Matching NER on test set
+- Runs OpenIE rule-based RE on test set
+- Compares all baselines against our SciBERT models
+
+Results summary:
+| Model | F1 |
+|-------|----|
+| SciSpaCy NER | 0.0273 |
+| Dictionary Matching NER | 0.3801 |
+| **SciBERT NER** | **0.3382** |
+| OpenIE RE | 0.0217 |
+| **SciBERT RE** | **0.4118** |
+
+---
+
+### STEP 8 — Run Web Interface
+**Script:** `src/query_engine/app.py`
+**Run on:** Local machine
+**Time:** ~2 minutes startup
+
+```bash
+py -3.11 -m pip install flask networkx scipy pandas
+py -3.11 src/query_engine/app.py
+```
+
+Open: `http://localhost:5000`
+
+---
+
+## Pipeline Summary
+
+| Step | Notebook/Script | Runs On | Output |
+|------|----------------|---------|--------|
+| 1 | 01_data_collection.ipynb | Local | climate_abstracts.csv |
+| 2 | 02_preprocessing.ipynb | Local | BIO train/dev/test files |
+| 3 | 03_preannotate.ipynb | Local | preannotated.json |
+| 4 | scibert_ner_training.ipynb | Colab GPU | NER model |
+| 5 | scibert_re_training.ipynb | Colab GPU | RE model |
+| 6 | knowledge_graph.ipynb | Local | climate_kg.pkl + .json |
+| 7 | baselines.ipynb | Colab | Evaluation results |
+| 8 | src/query_engine/app.py | Local | Web interface |
+
+
 
 ## LLM Use Statement
 Claude (Anthropic) was used as a documentation and coding(Syntax errors and Debugging code errors) assistant throughout implementation. All technical design decisions, model architecture choices, dataset selection, and experimental results were independently developed and validated by us.
