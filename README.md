@@ -222,7 +222,7 @@ Query Engine + Web Interface (Flask + D3.js)
 ---
 ---
 
-## 🔬 Full Pipeline — Running End-to-End (For Verification)
+## Full Pipeline — Running End-to-End (For Verification)
 
 > This section documents how to reproduce the entire pipeline 
 > from scratch. Each step builds on the previous one.
