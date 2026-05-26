@@ -6,15 +6,6 @@ a queryable Knowledge Graph with an interactive web interface.
 
 ---
 
-## Team
-| Name | ID | Role |
-|------|----|------|
-| Harshini Domala | YE32653 | Data collection, preprocessing, annotation |
-| Ashley Biscoe | PX70413 | NER and RE model training |
-| Mayukha Sista | FE67016 | Knowledge Graph, analytics, query engine, web interface |
-
----
-
 ## Quick Start — Running the Demo
 
 > **The web interface runs directly from precomputed files already 
